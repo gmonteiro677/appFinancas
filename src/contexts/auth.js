@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import Toast from 'react-native-toast-message';
 
 import api from '../services/api';
 import { useNavigation } from '@react-navigation/native';
@@ -13,6 +14,13 @@ function AuthProvider({ children }){
   const [loading, setLoading] = useState(true);
 
   const navigation = useNavigation();
+
+  const showToast = (type, text) => {
+    Toast.show({
+      type: type,
+      text1: text,
+    });
+  };
 
 useEffect (() => {
  async function loadStorage() {
@@ -92,6 +100,7 @@ useEffect (() => {
       setLoadingAuth(false);
 
     }catch(err){
+      showToast('error','Usuario ou senha errado')
       console.log("ERRO AO LOGAR ", err);
       setLoadingAuth(false);
     }
@@ -107,7 +116,7 @@ useEffect (() => {
 
 
   return(
-    <AuthContext.Provider value={{ signed: !!user, user, signUp, signIn, signOut, loadingAuth, loading }}>
+    <AuthContext.Provider value={{ signed: !!user, user, signUp, signIn, signOut, loadingAuth, loading, showToast }}>
       {children}
     </AuthContext.Provider>
   )

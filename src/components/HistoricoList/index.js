@@ -26,8 +26,21 @@ export default function HistoricoList({ data, deleteItem }){
      )
    }
 
+   function infoHistoricoList(){
+    Alert.alert(
+        'Informações do lançamento',
+        `Descrição: ${data.description}`,
+        [
+            {
+                text: 'Sair',
+                style: 'cancel0,'
+            }
+        ]
+    )
+   }
+
     return(
-       <TouchableWithoutFeedback onLongPress={handleDeleteItem}>
+       <TouchableWithoutFeedback onPress={infoHistoricoList} onLongPress={handleDeleteItem}>
         <C.Container>
             <C.Tipo>
                 <C.IconView tipo={data.type}>

@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TouchableOpacity, Modal } from "react-native";
 
 import Header from '../../components/Header' 
 import HistoricoList from "../../components/HistoricoList";
 
 import api from '../../services/api'
-import { format,formatISO } from 'date-fns'
+import { format } from 'date-fns'
 import * as C from './styles';
 import { useIsFocused } from '@react-navigation/native'
 import BalanceItem from '../../components/BalanceItem'

@@ -22,7 +22,7 @@ const [email, setEmail] = useState('')
 
     function handleSignUp(){
       if(nome === '' || senha == '' || email == ''  ) {
-        showToast('error', 'Preencha Todos os Campos');
+        showToast('info', 'Preencha Todos os Campos');
         return
       }
       signUp(email, senha, nome);
@@ -30,6 +30,7 @@ const [email, setEmail] = useState('')
 
   return(
     <C.Background>
+      <Toast />
         <C.Container
          behavior={Platform.OS === 'ios' ? 'padding' : ''}
          enabled

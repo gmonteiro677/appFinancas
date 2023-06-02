@@ -13,12 +13,24 @@ export default function SignIn(){
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
 
+   const showToast = (type, text) => {
+    Toast.show({
+      type: type,
+      text1: text,
+    });
+  };
+
    function handleLogin(){
+    if(email === '' || password === ''){
+      showToast('info','Preencha todos os campos!')
+      return;
+    }
     signIn(email, password)
    }
 
   return(
     <C.Background>
+       <Toast />
         <C.Container
           behavior={Platform.OS === 'ios' ? 'padding' : ''}
           enabled
