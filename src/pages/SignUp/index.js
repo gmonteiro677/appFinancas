@@ -2,15 +2,6 @@ import React, {useContext, useState} from "react";
 import { Platform, ActivityIndicator } from 'react-native';
 import Toast from 'react-native-toast-message';
 
-// import {
-//    Background,
-//    Container,
-//    AreaInput,
-//    Input,
-//    SubmitButton,
-//    SubmitText 
-//   } from "./styles";
-
 import * as C from "./styles"
 
 import { AuthContext } from "../../contexts/auth";
@@ -24,7 +15,7 @@ export default function SignUp(){
     });
   };
 
-const { SignUp, loadingAuth } = useContext(AuthContext)
+const { signUp, loadingAuth } = useContext(AuthContext)
 const [nome, setNome] = useState('')
 const [senha, setSenha] = useState('')
 const [email, setEmail] = useState('')
@@ -34,7 +25,7 @@ const [email, setEmail] = useState('')
         showToast('error', 'Preencha Todos os Campos');
         return
       }
-      SignUp(nome, senha, email);
+      signUp(email, senha, nome);
     }
 
   return(
